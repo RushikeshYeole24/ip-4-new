@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Welcome to our homepage">
+<title>T-shirt order Form</title>
+<script>
+function validateForm() {
+// Get the user's input values
+var tagline = document.getElementById("tagline").value;
+var phone = document.getElementById("phone").value;
+// Validate the message length
+if (tagline.length > 100) {
+alert("Message should not exceed 100 characters.");
+return false;
+}
+// Validate the mobile number
+if (!/^\d{10}$/.test(phone)) {
+alert("Mobile number should be exactly 10 digits.");
+return false;
+}
+// If all validations pass, the form can be submitted
+return true;
+}
+function generateReceipt() {
+// Get the user's input values
+var size = document.getElementById("size").value;
+var quantity =
+document.getElementById("quantity").value;
+// Validate the input fields
+if (size === "" || quantity === "") {
+alert("Please fill in all fields.");
+return;
+}
+// Get the current date
+var currentDate = new Date();
+// Generate the receipt
+var receipt = "Order Receipt for T-shirt\n";
+receipt += "-----------------\n";
+receipt += "Size: " + size + "\n";
+receipt += "Quantity: " + quantity + "\n";
+receipt += "Color: " + color + "\n";
+receipt += "Date: " + currentDate.toLocaleString() +
+"\n";
+// Display the receipt on the webpage
+alert(receipt);
+}
+</script>
+</head>
+<body>
+<h1>Place order for customized T-shirts</h1>
+<img src="tshirt.png" width="260px">
+<h3>Design your own T-shirt</h3>
+<form onsubmit="return validateForm()">
+<p>
+<label for="name">Buyer name : </label>
+<input type="text" id="name" placeholder="Your name"
+required>
+</p>
+<p>
+<label for="email">Email : </label>
+<input type="email" id="email" placeholder="Your email"
+required>
+</p>
+<p>
+<label for="phone">Contact number : </label>
+<input type="text" id="phone" placeholder="Your contact
+number" required>
+</p>
+<p>
+<label for="quantity">Order quantity : </label>
+<input type="number" id="quantity" placeholder="Enter
+quantity of T-shirts" required>
+</p>
+<p>
+<label for="tagline">T-shirt Tagline :</label>
+<textarea id="tagline" rows="3" placeholder="Enter
+tagline" required></textarea>
+</p>
+<p>
+<label for="color">Choose a colour :</label>
+<input type="color" id="color" required>
+</p>
+<p>
+<label for="size">Choose a size :</label>
+<select name="size" id="size">
+<option value="default" selected disabled>Select a
+size</option>
+<option value="extraSmall">XS</option>
+<option value="small">S</option>
+<option value="medium">M</option>
+<option value="large">L</option>
+<option value="extraLarge">XL</option>
+</select>
+</p>
+<p>
+<label for="address">Delivery address :</label>
+<textarea id="address" rows="4" placeholder="Your
+address" required></textarea>
+</p>
+<p>
+<input type="radio">
+<label>Opt for 24 hours express delivery (Charges extra)
+</label>
+</p>
+<p>
+<label>Choose preferred date of delivery:</label>
+<input type="date" id="dateInput" name="date">
+</p>
+<p>
+<input type="checkbox">
+<label>Allow us to send promotional emails</label>
+</p>
+<br>
+<input type="submit" value="Place order"
+onclick="generateReceipt()">
+</form>
+</body>
+</html>
